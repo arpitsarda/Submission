@@ -34,7 +34,7 @@ The "behavioral" section must be a compact array with one short tagged item for 
 
 The "demographic" section must use company_profile only - never infer industry, location, or structure from transaction data.
 
-The "psychographic" section must be a compact array with one short tagged item for EACH of these three metrics - do not omit any: resilience_alpha, growth_allocation_rate, modernization_ratio. Same terse phrase style, framed explicitly as inference not certainty, e.g. "Cost resilience (inferred): material spend moved opposite the +15% industry direction".
+The "psychographic" section must be a compact array with one short tagged item for EACH of these three metrics - do not omit any: resilience_alpha, growth_allocation_rate, modernization_ratio. Same terse phrase style, framed explicitly as inference not certainty, e.g. "Cost resilience: material spend moved opposite the +15% industry direction".
 
 Strict separation: never mention resilience_alpha, growth_allocation_rate, or modernization_ratio anywhere in "behavioral" - they belong to "psychographic" only. Never mention retained_liquidity, supply_chain_concentration, labor_intensity, lease_inefficiency, or peak_cash_gap anywhere in "psychographic" - they belong to "behavioral" only. Each signal appears in exactly one section, never both, and every signal must appear somewhere - none may be silently dropped.
 
