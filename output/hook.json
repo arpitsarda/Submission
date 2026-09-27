@@ -1,0 +1,6 @@
+{
+  "hook": "I noticed that 74.68% of your material spend is currently tied directly to Intermountain Lumber. Let's discuss setting up a Supply Chain Finance program to optimize your working capital around this core supplier.",
+  "primary_signal": "Supply chain concentration: 74.68% of material spend tied to Intermountain Lumber",
+  "reasoning": "With 74.68% of material spend concentrated with a single vendor, Intermountain Lumber, the client faces severe operational and liquidity exposure to that specific supplier. A Supply Chain Finance program can help optimize working capital and secure payment terms, mitigating this acute supplier concentration risk.",
+  "product_recommendation": "Supply Chain Finance"
+}

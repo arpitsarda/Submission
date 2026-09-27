@@ -1,0 +1,93 @@
+{
+  "metrics": {
+    "resilience_alpha": {
+      "label": "Exposure-Adjusted Resilience Alpha (shadow-cost method)",
+      "industry_benchmark_pct": 15.0,
+      "vendor_observations": {
+        "Intermountain Lumber": {
+          "n_transactions": 2,
+          "baseline_unit_cost": 12000.0,
+          "real_spend": 23000,
+          "shadow_spend": 24000.0
+        },
+        "Steel Supply Co": {
+          "n_transactions": 2,
+          "baseline_unit_cost": 4000.0,
+          "real_spend": 7800,
+          "shadow_spend": 8000.0
+        }
+      },
+      "total_real_material_spend": 30800.0,
+      "total_shadow_material_spend": 32000.0,
+      "company_material_inflation_pct": -3.75,
+      "material_spend": 30800.0,
+      "total_operating_spend": 62400.0,
+      "score": 9.2548,
+      "interpretation": "Real spend compared against a fixed-price shadow baseline (Day-1 unit cost per vendor, quantity assumed constant), scaled by how much of total spend materials represent. Cannot separate price change from purchase-volume change without real quantity data."
+    },
+    "retained_liquidity": {
+      "label": "Retained Liquidity Ratio",
+      "ending_checking_balance": 44720.0,
+      "savings_transfer": 5000.0,
+      "total_retained_liquidity": 49720.0,
+      "total_revenue_inflows": 112120.0,
+      "ratio_pct": 44.3453,
+      "interpretation": "Share of observed inflows retained as cash (checking + savings) rather than spent. Assumes zero opening balance; not a true bank balance."
+    },
+    "growth_allocation_rate": {
+      "label": "Growth Allocation Rate",
+      "growth_and_tech_spend": 10650.0,
+      "total_gross_expenditure": 62400.0,
+      "rate_pct": 17.0673,
+      "interpretation": "Share of total observed spend directed to growth/tech outflows rather than routine operating categories."
+    },
+    "supply_chain_concentration": {
+      "label": "Supply Chain Concentration Ratio",
+      "primary_vendor": "Intermountain Lumber",
+      "primary_vendor_spend": 23000.0,
+      "total_material_spend": 30800.0,
+      "ratio_pct": 74.6753,
+      "interpretation": "Share of material spend concentrated in the single largest vendor. High values can mean pricing leverage or single-supplier dependency."
+    },
+    "labor_intensity": {
+      "label": "Labor Intensity Ratio",
+      "payroll_spend": 17000.0,
+      "total_revenue": 112000.0,
+      "ratio_pct": 15.1786,
+      "interpretation": "Share of revenue consumed by payroll \u2014 a scalability proxy."
+    },
+    "modernization_ratio": {
+      "label": "Modernization Ratio",
+      "tech_and_software_spend": 650.0,
+      "ga_proxy_spend": 18750.0,
+      "ratio_pct": 3.4667,
+      "interpretation": "Tech/software spend relative to routine operating spend."
+    },
+    "lease_inefficiency": {
+      "label": "Lease Inefficiency Ratio",
+      "lease_spend": 2200.0,
+      "denominator_lease_plus_ga": 20950.0,
+      "ratio_pct": 10.5012,
+      "interpretation": "Share of lease-plus-overhead spend going to renting rather than owning equipment."
+    },
+    "peak_cash_gap": {
+      "label": "Peak Cash Gap",
+      "threshold_used": 10000,
+      "max_gap_days": 12,
+      "between_dates": [
+        "2026-03-15",
+        "2026-03-27"
+      ],
+      "interpretation": "Longest observed stretch between major client deposits."
+    }
+  },
+  "ranked_by_magnitude": [
+    "supply_chain_concentration",
+    "retained_liquidity",
+    "labor_intensity",
+    "lease_inefficiency",
+    "resilience_alpha",
+    "modernization_ratio",
+    "growth_allocation_rate"
+  ]
+}

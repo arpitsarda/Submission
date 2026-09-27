@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elite Builds LLC — Sympera RM View</title>
+<style>
+:root{--bg:#f6f7f9;--surface:#fff;--border:#e5e7eb;--text:#111827;--muted:#6b7280;--subtle:#f3f4f6;--dark:#111827;--accent:#047857;--accent-bg:#ecfdf5}
+*{box-sizing:border-box}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+
+/* left nav */
+.clientnav{position:fixed;left:0;top:0;bottom:0;width:230px;background:#fff;border-right:1px solid var(--border);padding:20px 14px;overflow-y:auto}
+.clientnav .logo{font-size:18px;font-weight:750;padding:0 6px 20px}
+.navlabel{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#9ca3af;padding:4px 6px}
+.navitem{padding:9px 10px;border-radius:8px;font-size:13px;font-weight:650;background:var(--subtle);margin:2px 0 14px}
+.client{padding:10px 10px;border-radius:8px;margin-bottom:4px}
+.client.active{background:var(--subtle)}
+.client strong{display:block;font-size:13px}
+.client span{font-size:11px;color:var(--muted)}
+
+/* shell */
+.shell{margin-left:230px;transition:margin-right .2s}
+.shell.shift{margin-right:340px}
+.topbar{height:60px;border-bottom:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px}
+.topbar-title{font-size:14px;font-weight:650}
+.topbar-right{display:flex;gap:8px;align-items:center}
+.topbar input, .topbar select{border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:12px}
+.askbtn{border:1px solid #d1d5db;background:#fff;border-radius:8px;padding:7px 11px;font-size:12px;cursor:pointer}
+
+.content{max-width:880px;margin:0 auto;padding:26px 24px 60px}
+.breadcrumb{font-size:11px;color:var(--muted);margin-bottom:6px}
+.content h1{font-size:26px;margin:0 0 4px;letter-spacing:-.01em}
+.subtitle{font-size:12px;color:var(--muted);margin-bottom:20px}
+
+/* contact card */
+.contact{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:13px 16px;margin-bottom:18px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.contact-info strong{font-size:13px;display:block}
+.contact-info span{font-size:11px;color:var(--muted)}
+.contact-flag{margin-left:auto;font-size:10px;color:#9ca3af;text-align:right;max-width:160px}
+
+/* hero / hook */
+.hero{background:var(--dark);color:#fff;border-radius:14px;padding:22px}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#9ca3af;font-weight:700}
+.hero .callout{font-size:11px;color:#9ca3af;margin:10px 0 4px}
+.hero .hookline{font-size:15px;line-height:1.6;color:#fff;margin:0 0 16px;font-weight:500}
+.hero .hookline b{color:#93c5fd}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#1f2937;border-radius:8px;padding:8px 11px;font-size:12px;color:#e5e7eb}
+.chip b{color:#fff;display:block;font-size:13px}
+
+.section{margin-top:28px}
+.section-head{font-size:13px;font-weight:700;margin-bottom:10px;color:#374151}
+.section-note{font-size:11px;color:var(--muted);font-weight:400}
+
+.pitches{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pitch{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px}
+.pitch h3{font-size:13px;margin:0 0 6px}
+.pitch p{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 8px}
+.pitch .metric{font-size:11px;color:var(--accent);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:12px;background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden}
+th,td{padding:9px 10px;border-bottom:1px solid #f0f1f3;text-align:left}
+th{background:var(--subtle);font-size:11px;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:none}
+.amt-credit{color:var(--accent)}
+.amt-debit{color:#b91c1c}
+
+/* ask sidebar (right, collapsible) */
+.sidebar{position:fixed;top:0;right:-340px;bottom:0;width:340px;background:#fff;border-left:1px solid var(--border);
+  padding:18px;transition:right .2s;display:flex;flex-direction:column;z-index:5}
+.sidebar.open{right:0}
+.sidebar h3{font-size:14px;margin:0 0 4px}
+.sidebar .sub{font-size:11px;color:var(--muted);margin-bottom:14px}
+.sidebar .closebtn{position:absolute;top:16px;right:16px;border:none;background:none;cursor:pointer;font-size:16px;color:var(--muted)}
+.sug{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.sug button{text-align:left;border:1px solid var(--border);background:var(--subtle);border-radius:8px;padding:9px 10px;font-size:12px;cursor:pointer;color:#374151}
+.ask-row{display:flex;gap:6px}
+.ask-row input{flex:1;border:1px solid var(--border);border-radius:8px;padding:9px;font-size:12px}
+.ask-row button{border:none;background:var(--dark);color:#fff;border-radius:8px;padding:9px 12px;font-size:12px;cursor:pointer}
+.answer{margin-top:12px;background:var(--subtle);border-radius:8px;padding:11px;font-size:12px;line-height:1.55;color:#374151;overflow-y:auto}
+
+@media(max-width:900px){
+  .clientnav{position:static;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--border)}
+  .shell{margin-left:0}
+  .shell.shift{margin-right:0}
+  .sidebar{width:100%;right:-100%}
+  .pitches{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<aside class="clientnav">
+  <div class="logo">Sympera</div>
+  <div class="navlabel">Workspace</div>
+  <div class="navitem">My Portfolio</div>
+  <div class="navlabel">Clients</div>
+  <div class="client active"><strong>Elite Builds LLC</strong><span>Construction · Utah</span></div>
+  <div class="client"><strong>Acme Manufacturing</strong><span>Sample client — no live data</span></div>
+  <div class="client"><strong>Northstar Logistics</strong><span>Sample client — no live data</span></div>
+</aside>
+
+<div class="shell" id="shell">
+  <div class="topbar">
+    <div class="topbar-title">My Portfolio</div>
+    <div class="topbar-right">
+      <input placeholder="Search clients">
+      <select id="period">
+        <option>March 2026</option>
+        <option disabled>February 2026 — no data synced</option>
+        <option disabled>January 2026 — no data synced</option>
+      </select>
+      <button class="askbtn" onclick="toggleSidebar()">Ask about this client</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="breadcrumb">My Portfolio / Elite Builds LLC</div>
+    <h1>Elite Builds LLC</h1>
+    <div class="subtitle">Construction · Utah · LLC · Observed period: March 2026</div>
+
+    <div class="contact">
+      <div class="avatar">X</div>
+      <div class="contact-info">
+        <strong>X — Owner / Principal</strong>
+        <span>Primary contact · (placeholder — CRM field, not in transaction data)</span>
+      </div>
+      <div class="contact-flag">Name, title and phone would come from CRM/KYC records, not the bank feed.</div>
+    </div>
+
+    <section class="hero">
+      <div class="eyebrow">Why this client · why now</div>
+      <div class="callout">Read this on the call:</div>
+      <p class="hookline">"Hi X, I noticed almost <b>three-quarters of your material purchases</b> this month went through Intermountain Lumber — that's a strong, steady vendor relationship you've built. I'd like to set up a quick call about a <b>payables financing</b> option that could free up cash flow, without changing that relationship at all."</p>
+      <div class="chips">
+        <div class="chip"><b>74.7%</b>Vendor concentration</div>
+        <div class="chip"><b>$23,000</b>Spend with Intermountain Lumber</div>
+        <div class="chip"><b>$30,800</b>Total March material spend</div>
+        <div class="chip"><b>Supplier Payables Financing</b>Recommended product</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">Other pitches <span class="section-note">— ranked by signal strength</span></div>
+      <div class="pitches">
+        <div class="pitch">
+          <h3>Treasury Sweep &amp; Reserve Management</h3>
+          <p>44.3% of March inflows ($49,720) were retained as cash rather than spent, including a $5,000 savings transfer.</p>
+          <div class="metric">Retained Liquidity Ratio: 44.3%</div>
+        </div>
+        <div class="pitch">
+          <h3>Integrated Payroll &amp; Banking</h3>
+          <p>$17,000 of March revenue (15.2%) went to payroll — a recurring cost that could route through the bank's payroll tools.</p>
+          <div class="metric">Labor Intensity Ratio: 15.2%</div>
+        </div>
+        <div class="pitch">
+          <h3>Preferred Working-Capital Line</h3>
+          <p>Material outflows moved opposite the industry's reported +15% cost direction this month. Single-period observation, not a proven trend.</p>
+          <div class="metric">Resilience Alpha score: 9.25 (shadow-cost method)</div>
+        </div>
+        <div class="pitch">
+          <h3>Equipment Ownership Term Loan</h3>
+          <p>$2,200 (10.5% of lease + overhead spend) went to leasing an excavator rather than owning it outright.</p>
+          <div class="metric">Lease Inefficiency Ratio: 10.5%</div>
+        </div>
+        <div class="pitch">
+          <h3>Overdraft / Invoice Factoring Backstop</h3>
+          <p>The longest gap between major client deposits this month was 12 days (Mar 15 → Mar 27).</p>
+          <div class="metric">Peak Cash Gap: 12 days</div>
+        </div>
+        <div class="pitch">
+          <h3>Business Expansion Term Loan</h3>
+          <p>9.5% of total spend went to Growth and Tech/Growth categories, incl. a $10,000 equipment down payment.</p>
+          <div class="metric">Growth Allocation Rate: 17.1%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">Transactions <span class="section-note">— March 2026, all 20 observed rows</span></div>
+      <table id="txTable"><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Amount</th></tr></thead><tbody></tbody></table>
+    </section>
+  </div>
+</div>
+
+<div class="sidebar" id="sidebar">
+  <button class="closebtn" onclick="toggleSidebar()">✕</button>
+  <h3>Ask about Elite Builds</h3>
+  <div class="sub">Answers are assembled from the signals on this page — nothing is invented.</div>
+  <div class="sug">
+    <button onclick="ask('why')">Why is this client a priority?</button>
+    <button onclick="ask('evidence')">Show the evidence behind the recommendation</button>
+    <button onclick="ask('other')">What else could I pitch?</button>
+  </div>
+  <div class="ask-row">
+    <input id="q" placeholder="Type a question…" onkeydown="if(event.key==='Enter')ask()">
+    <button onclick="ask()">Ask</button>
+  </div>
+  <div class="answer" id="answer" style="display:none"></div>
+</div>
+
+<script>
+const TX = [
+  ["2026-03-01","Client Payment - Project Alpha","Revenue",45000],
+  ["2026-03-02","Vendor: Intermountain Lumber","Inventory",-12000],
+  ["2026-03-04","Payroll Service","Operations",-8500],
+  ["2026-03-05","Client Payment - Project Beta","Revenue",22000],
+  ["2026-03-08","Lease Payment - Excavator","Equipment",-2200],
+  ["2026-03-10","Gas & Fuel","Operations",-600],
+  ["2026-03-12","Vendor: Steel Supply Co","Inventory",-4000],
+  ["2026-03-15","Client Payment - Deposit","Revenue",15000],
+  ["2026-03-18","Software Subscription (AutoCAD)","Tech/Growth",-150],
+  ["2026-03-20","Marketing - Local SEO","Tech/Growth",-500],
+  ["2026-03-22","Bonus Interest Earned","Interest",120],
+  ["2026-03-23","Vendor: Intermountain Lumber","Inventory",-11000],
+  ["2026-03-25","Payroll Service","Operations",-8500],
+  ["2026-03-26","Internal Transfer to Savings","Savings",-5000],
+  ["2026-03-27","Client Payment - Project Gamma","Revenue",30000],
+  ["2026-03-28","Site Permit Fees","Operations",-450],
+  ["2026-03-29","Vendor: Steel Supply Co","Inventory",-3800],
+  ["2026-03-30","Tool Repair","Operations",-300],
+  ["2026-03-31","Utility Bill","Operations",-400],
+  ["2026-03-31","New Equipment Downpayment","Growth",-10000],
+];
+const tbody = document.querySelector("#txTable tbody");
+TX.forEach(([date, desc, cat, amt]) => {
+  const cls = amt >= 0 ? "amt-credit" : "amt-debit";
+  const sign = amt >= 0 ? "+" : "-";
+  tbody.innerHTML += `<tr><td>${date.slice(5)}</td><td>${desc}</td><td>${cat}</td><td class="${cls}">${sign}$${Math.abs(amt).toLocaleString()}</td></tr>`;
+});
+
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("shell").classList.toggle("shift");
+}
+
+const ANSWERS = {
+  why: "Elite Builds' clearest signal this month is vendor concentration: 74.7% of material spend ($23,000 of $30,800) went to one supplier, Intermountain Lumber — a stable relationship worth building on with a payables-financing offer.",
+  evidence: "Intermountain Lumber: $12,000 (Mar 2) + $11,000 (Mar 23) = $23,000. Steel Supply Co: $4,000 + $3,800 = $7,800. Total material spend: $30,800. $23,000 / $30,800 = 74.7%.",
+  other: "Five other angles, ranked by signal strength: Retained Liquidity (44.3%), Labor Intensity (15.2%), Resilience Alpha (score 9.25), Lease Inefficiency (10.5%), and a 12-day Peak Cash Gap between major deposits."
+};
+
+function ask(key){
+  const box = document.getElementById("answer");
+  const q = document.getElementById("q");
+  let text;
+  if (key && ANSWERS[key]) {
+    text = ANSWERS[key];
+  } else {
+    const typed = (q.value || "").toLowerCase();
+    if (typed.includes("why") || typed.includes("priority")) text = ANSWERS.why;
+    else if (typed.includes("evidence") || typed.includes("show")) text = ANSWERS.evidence;
+    else if (typed.includes("other") || typed.includes("else") || typed.includes("pitch")) text = ANSWERS.other;
+    else text = "I can answer from what's on this page: why this client is a priority, the evidence behind the recommendation, or other pitches worth considering. Try one of the suggestions above.";
+  }
+  box.style.display = "block";
+  box.textContent = text;
+  q.value = "";
+}
+</script>
+</body>
+</html>

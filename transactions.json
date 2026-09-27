@@ -1,0 +1,142 @@
+[
+  {
+    "date": "2026-03-01",
+    "description": "Client Payment - Project Alpha",
+    "category": "Revenue",
+    "amount": 45000,
+    "type": "Credit"
+  },
+  {
+    "date": "2026-03-02",
+    "description": "Vendor: Intermountain Lumber",
+    "category": "Inventory",
+    "amount": -12000,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-04",
+    "description": "Payroll Service",
+    "category": "Operations",
+    "amount": -8500,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-05",
+    "description": "Client Payment - Project Beta",
+    "category": "Revenue",
+    "amount": 22000,
+    "type": "Credit"
+  },
+  {
+    "date": "2026-03-08",
+    "description": "Lease Payment - Excavator",
+    "category": "Equipment",
+    "amount": -2200,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-10",
+    "description": "Gas & Fuel",
+    "category": "Operations",
+    "amount": -600,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-12",
+    "description": "Vendor: Steel Supply Co",
+    "category": "Inventory",
+    "amount": -4000,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-15",
+    "description": "Client Payment - Deposit",
+    "category": "Revenue",
+    "amount": 15000,
+    "type": "Credit"
+  },
+  {
+    "date": "2026-03-18",
+    "description": "Software Subscription (AutoCAD)",
+    "category": "Tech/Growth",
+    "amount": -150,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-20",
+    "description": "Marketing - Local SEO",
+    "category": "Tech/Growth",
+    "amount": -500,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-22",
+    "description": "Bonus Interest Earned",
+    "category": "Interest",
+    "amount": 120,
+    "type": "Credit"
+  },
+  {
+    "date": "2026-03-23",
+    "description": "Vendor: Intermountain Lumber",
+    "category": "Inventory",
+    "amount": -11000,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-25",
+    "description": "Payroll Service",
+    "category": "Operations",
+    "amount": -8500,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-26",
+    "description": "Internal Transfer to Savings",
+    "category": "Savings",
+    "amount": -5000,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-27",
+    "description": "Client Payment - Project Gamma",
+    "category": "Revenue",
+    "amount": 30000,
+    "type": "Credit"
+  },
+  {
+    "date": "2026-03-28",
+    "description": "Site Permit Fees",
+    "category": "Operations",
+    "amount": -450,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-29",
+    "description": "Vendor: Steel Supply Co",
+    "category": "Inventory",
+    "amount": -3800,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-30",
+    "description": "Tool Repair",
+    "category": "Operations",
+    "amount": -300,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-31",
+    "description": "Utility Bill",
+    "category": "Operations",
+    "amount": -400,
+    "type": "Debit"
+  },
+  {
+    "date": "2026-03-31",
+    "description": "New Equipment Downpayment",
+    "category": "Growth",
+    "amount": -10000,
+    "type": "Debit"
+  }
+]
